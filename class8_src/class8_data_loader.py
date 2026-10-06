@@ -9,4 +9,6 @@ def load_netflix(filepath):
     # Load filepath using pd.read_csv().
     # Log an INFO.
     # Return the DataFrame.
-    pass
+    df = pd.read_csv(filepath)
+    logger.info("CSV data loaded")
+    return df

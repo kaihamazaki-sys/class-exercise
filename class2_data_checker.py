@@ -2,6 +2,7 @@ import argparse
 import csv
 import sys
 from pathlib import Path
+import logging
 
 
 def check_data(filename):
@@ -19,6 +20,15 @@ def check_data(filename):
             missing_rows.append(row_number)
 
     return header, data, missing_rows
+
+# Set up logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)-8s %(message)s",
+    datefmt="%H:%M:%S"
+)
+# Create a module-level logger
+logger = logging.getLogger(__name__)
 
 # TODO 1: Create an ArgumentParser
 # Description: "Check the quality of a CSV file."
@@ -61,7 +71,10 @@ parser.add_argument(
 
 # TODO 5: Parse the command-line arguments
 args = parser.parse_args()
+if args.verbose:
+    logger.setLevel(logging.DEBUG)
 
+logger.debug(f"Arguments parsed: dilename={args.input}")
 
 # Check if the file exists 
 p = Path(args.input)
