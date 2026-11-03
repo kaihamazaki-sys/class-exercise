@@ -22,3 +22,5 @@ venv/
 # Ignore all text files except requirements.txt
 *.txt
 !requirements.txt
+
+class16_18/data/
